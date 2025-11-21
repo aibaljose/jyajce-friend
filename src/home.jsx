@@ -10,8 +10,33 @@ import {
 import { auth } from "./firebase";
 import { db } from "./firebase";
 import { doc, setDoc } from "firebase/firestore";
+import { useLocation } from "react-router-dom";
 
 const Home = ({ user }) => {
+  const location = useLocation();
+  console.log("Query string:", location.search);
+  const storeAccessLog = async () => {
+    try {
+      const accessLogRef = doc(db, "accessLogs", Date.now().toString());
+      await setDoc(accessLogRef, {
+        queryString: location.search,
+        pathname: location.pathname,
+        timestamp: new Date(),
+        userAgent: navigator.userAgent,
+        referrer: document.referrer || "direct"
+      });
+      console.log("Access log stored successfully");
+    } catch (error) {
+      console.error("Error storing access log:", error);
+    }
+  };
+
+  React.useEffect(() => {
+    storeAccessLog();
+  }, [location.search]);
+  
+  // Store query params to Firestore
+
   const [isRegister, setIsRegister] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -23,7 +48,6 @@ const Home = ({ user }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  // REGISTER
   async function handleRegister(e) {
     e.preventDefault();
     setError("");

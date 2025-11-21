@@ -29,6 +29,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home user={user} />} />
+        <Route path="/getdata" element={<Home user={user} />} />
       </Routes>
     </BrowserRouter>
   );
