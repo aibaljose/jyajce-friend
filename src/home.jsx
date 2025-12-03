@@ -291,7 +291,7 @@ const Home = ({ user }) => {
       setError("");
       setIsCheckingRegistration(false);
       setShowInstructionsModal(false);
-      setCurrentTask("Avoid Instagram for a day");
+      setCurrentTask("Avoid Junk Food for One Day");
       setIsTaskCompleted(false);
       setCustomTask("");
     } catch (err) {
@@ -299,7 +299,6 @@ const Home = ({ user }) => {
     }
   }
 
-  // Show loading screen while checking registration status
   if (user && isCheckingRegistration) {
     return (
       <div className="min-h-screen flex justify-center items-center p-6 bg-gradient-to-b from-red-600 via-rose-600 to-red-700">
