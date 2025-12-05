@@ -94,7 +94,7 @@ const Home = ({ user }) => {
 
   const [mobile, setMobile] = useState("");
   const [admissionNo, setAdmissionNo] = useState("");
-  const [currentTask, setCurrentTask] = useState("Avoid Junk Food for One Day");
+  const [currentTask, setCurrentTask] = useState("Call a friend you haven’t spoken to in a while");
   const [isTaskCompleted, setIsTaskCompleted] = useState(false);
   const [customTask, setCustomTask] = useState("");
 
@@ -136,11 +136,11 @@ const Home = ({ user }) => {
       
       if (taskDoc.exists()) {
         const taskData = taskDoc.data();
-        setCurrentTask(taskData.task || "Avoid Junk Food for One Day");
+        setCurrentTask(taskData.task || "Call a friend you haven’t spoken to in a while");
         setIsTaskCompleted(taskData.completed || false);
       } else {
         // No task for today, use default
-        setCurrentTask("Avoid Junk Food for One Day");
+        setCurrentTask("Call a friend you haven’t spoken to in a while");
         setIsTaskCompleted(false);
       }
     } catch (error) {
@@ -291,7 +291,7 @@ const Home = ({ user }) => {
       setError("");
       setIsCheckingRegistration(false);
       setShowInstructionsModal(false);
-      setCurrentTask("Avoid Junk Food for One Day");
+      setCurrentTask("Call a friend you haven’t spoken to in a while");
       setIsTaskCompleted(false);
       setCustomTask("");
     } catch (err) {
