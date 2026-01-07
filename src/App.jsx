@@ -31,7 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home user={user} />} />
         <Route path="/getdata" element={<Home user={user} />} />
-        <Route path="/admin" element={<Admin user={user} />} />
+        {/* <Route path="/admin" element={<Admin user={user} />} /> */}
       </Routes>
     </BrowserRouter>
   );
